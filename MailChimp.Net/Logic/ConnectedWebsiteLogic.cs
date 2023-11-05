@@ -23,7 +23,7 @@ internal class ConnectedWebsiteLogic : BaseLogic, IConnectedWebsiteLogic
         using var client = CreateMailClient("/connected-sites");
 
         var postRequst = new ConnectedWebsiteRequest { domain = domain, foreign_id = foreignId };
-        var response = await client.PostAsJsonAsync("", postRequst).ConfigureAwait(false);
+        var response = await client.PostAsJsonAsync("", postRequst, new System.Threading.CancellationToken()).ConfigureAwait(false);
         await response.EnsureSuccessMailChimpAsync().ConfigureAwait(false);
 
         return await response.Content.ReadAsAsync<Site>().ConfigureAwait(false);
@@ -32,8 +32,8 @@ internal class ConnectedWebsiteLogic : BaseLogic, IConnectedWebsiteLogic
     public async Task<IEnumerable<Site>> GetAllAsync()
     {
         using var client = CreateMailClient("/connected-sites");
-        
-        var response = await client.GetAsync("");
+
+        var response = await client.GetAsync("", new System.Threading.CancellationToken());
         await response.EnsureSuccessMailChimpAsync();
 
         var appResponse = await response.Content.ReadAsAsync<ConnectedWebsiteResponse>().ConfigureAwait(false);
