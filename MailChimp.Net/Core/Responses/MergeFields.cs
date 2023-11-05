@@ -29,7 +29,7 @@ public class MergeFieldAddress
     /// <summary>
     /// Gets or sets the address 2.
     /// </summary>
-    [JsonProperty("addr1")]
+    [JsonProperty("addr2")]
     public string Address2 { get; set; }
 
     /// <summary>
