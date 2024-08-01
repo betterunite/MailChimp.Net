@@ -88,7 +88,7 @@ public class Campaign
     /// Gets or sets the send time.
     /// </summary>
     [JsonProperty("send_time")]
-    public DateTime? SendTime { get; set; }
+    public string SendTime { get; set; }
 
     /// <summary>
     /// Gets or sets the settings.
